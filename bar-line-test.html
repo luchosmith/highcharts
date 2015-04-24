@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Highcharts Example</title>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="highchartsData.js"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=Oswald:300,400,700' rel='stylesheet' type='text/css'>
+
+
+    <!-- <script src="highcharts/highcharts.js"></script> -->
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <!-- <script src="highcharts/exporting.js"></script> -->
+    <script type="text/javascript" src="http://fast.fonts.net/jsapi/2054972c-e3ca-4eee-94d2-a1a004af7320.js"></script>
+<style>
+* {
+    font-family: Arial, sans-serif;
+}
+#chart {
+    min-width: 500px; max-width: 700px; height: 500px; margin: 0 auto;
+}
+#chart-data {
+    margin:50px auto 0;width:700px;
+}
+
+#chart-data a {
+    display: inline-block;
+    margin:0 10px 5px 0;
+}
+#chart-data a.selected {
+    color:#000;
+    text-decoration: none;
+}
+#chart-data .custom-inputs {
+    display: none;
+}
+#chart-data .custom-inputs input {
+    margin-right: 10px;
+}
+#chart-data .data-types {
+    margin: 0 0 10px 0;
+}
+</style>
+
+
+
+    </head>
+
+
+    <body>
+
+        <div id="chart"></div>
+
+        <div id="chart-data">
+            <div class="series series-one">
+                <h3>Series One</h3>
+                <div class="data-types">
+                        percentage
+                        <input type="radio" name="series-one-type" value="percentage" checked>
+                        decimal
+                        <input type="radio" name="series-one-type" value="decimal">
+                </div>
+
+                <a href="#" class="selected" data-set="dataSet1">data set 1</a>
+                <a href="#" data-set="dataSet2">data set 2</a>
+                <a href="#" data-set="dataSet3">data set 3</a>
+                <a href="#" class="custom">custom</a>
+
+                <div class="custom-inputs">
+                    <input type="text" value="12" size="3"/>
+                    <input type="text" value="11.3" size="3"/>
+                    <input type="text" value="10" size="3"/>
+                    <input type="text" value="11.7" size="3"/>
+                    <input type="text" value="12.5" size="3"/>
+                    <input type="text" value="15" size="3"/>
+                </div>
+                
+            </div>
+            <div class="series series-two">
+                <h3>Series Two</h3>
+                <div class="data-types">
+                        percentage
+                        <input type="radio" name="series-two-type" value="percentage" >
+                        decimal
+                        <input type="radio" name="series-two-type" value="decimal" checked>
+                </div>
+                <a href="#" class="selected" data-set="dataSet1">data set 1</a>
+                <a href="#" data-set="dataSet2">data set 2</a>
+                <a href="#" data-set="dataSet3">data set 3</a>
+                <a href="#" class="custom">custom</a>
+                <div class="custom-inputs">
+                    <input type="text" value="2.3" size="3"/>
+                    <input type="text" value="4.6" size="3"/>
+                    <input type="text" value="12" size="3"/>
+                    <input type="text" value="19" size="3"/>
+                    <input type="text" value="22" size="3"/>
+                    <input type="text" value="40" size="3"/>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
