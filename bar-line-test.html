@@ -3,48 +3,41 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>Highcharts Example</title>
+        <link href='http://fonts.googleapis.com/css?family=Oswald:300,400,700' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+        <script src="highchartsData.js"></script>
+        <style>
+                * {
+                    font-family: "Oswald", Arial, sans-serif;
+                }
+                #chart {
+                    /* TODO: the final chart will be about 480px wide; */
+                    min-width: 500px; max-width: 700px; height: 500px; margin: 0 auto;
+                }
+                #chart-data {
+                    margin:50px auto 0;width:700px;
+                    font-family: Arial, sans-serif;
+                }
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script src="highchartsData.js"></script>
-
-    <link href='http://fonts.googleapis.com/css?family=Oswald:300,400,700' rel='stylesheet' type='text/css'>
-
-
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-
-<style>
-* {
-    font-family: "Oswald", Arial, sans-serif;
-}
-#chart {
-    min-width: 500px; max-width: 700px; height: 500px; margin: 0 auto;
-}
-#chart-data {
-    margin:50px auto 0;width:700px;
-    font-family: Arial, sans-serif;
-}
-
-#chart-data a {
-    display: inline-block;
-    margin:0 10px 5px 0;
-}
-#chart-data a.selected {
-    color:#000;
-    text-decoration: none;
-}
-#chart-data .custom-inputs {
-    display: none;
-}
-#chart-data .custom-inputs input {
-    margin-right: 10px;
-}
-#chart-data .data-types {
-    margin: 0 0 10px 0;
-}
-</style>
-
-
-
+                #chart-data a {
+                    display: inline-block;
+                    margin:0 10px 5px 0;
+                }
+                #chart-data a.selected {
+                    color:#000;
+                    text-decoration: none;
+                }
+                #chart-data .custom-inputs {
+                    display: none;
+                }
+                #chart-data .custom-inputs input {
+                    margin-right: 10px;
+                }
+                #chart-data .data-types {
+                    margin: 0 0 10px 0;
+                }
+        </style>
     </head>
 
 
