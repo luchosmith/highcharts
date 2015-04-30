@@ -380,7 +380,7 @@ var highchartsDefaultConfig = {
                 }
             },
             dataLabels: {
-                enable        : true,
+                enabled        : true,
                 allowOverlap  : true,
                 crop          : false,
                 overflow      : 'none',
@@ -452,7 +452,6 @@ var highchartsDefaultConfig = {
   *
 */
 function repositionLabels(series) {
-
     
     var sc = series.length, columnSeries, lineSeries, lineMarkerRadius, chart;
 
@@ -467,13 +466,12 @@ function repositionLabels(series) {
         lineSeries       = series[1].points;
         lineMarkerRadius = series[1].options.marker.radius || 9;
     } else if (series[0].options.type === 'line' && series[1].options.type === 'column' ) {
+        columnSeries     = series[1].points;
         lineSeries       = series[0].points;
         lineMarkerRadius = series[0].options.marker.radius;
-        columnSeries     = series[1].points;
     } else {
         return;
     }
-
 
     for (i = 0; i < lineSeries.length; i++) {
 
@@ -559,7 +557,6 @@ function adjustChart(series) {
 
     // TODO: can this be a local path ?
     chart.renderer.image('http://i.imgur.com/gVpmmRR.png',logoX,logoY,115,11).add();
-
     repositionLabels(series);
 
 }
@@ -567,7 +564,6 @@ function adjustChart(series) {
 
 
 function buildColumnData(rawData, yAxis) {
-    
     return {
         name  : rawData.Name,
         color : yAxis ? '#ff0000' : '#000000',
