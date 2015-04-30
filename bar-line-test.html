@@ -9,89 +9,46 @@
         <script src="highchartsData.js"></script>
         <style>
                 * {
-                    font-family: "Oswald", Arial, sans-serif;
-                }
-                #chart {
-                    /* TODO: the final chart will be about 480px wide; */
-                    min-width: 500px; max-width: 700px; height: 500px; margin: 0 auto;
-                }
-                #chart-data {
-                    margin:50px auto 0;width:700px;
                     font-family: Arial, sans-serif;
                 }
+                body {
+                    padding:20px 0 0 0px;
+                }
+                #series-data {
+                    float:left;
+                    padding: 15px;
+                    margin: 0 30px 0 0;
+                    font-size:.8em;
+                    background-color: #ddd;
+                    border-top: 4px solid #aaa;
+                }
+                #series-data > div {
+                    margin: 0 0 5px 0;
+                }
+                #chart {
+                    width: 465px;
+                    float:left;
+                }
+                #dummy-chart {
+                    width:450px;
+                    float:left;
+                    border-top: 4px solid #aaa;
+                    border-bottom: 1px solid #aaa;
+                    color:#eee;
+                }
 
-                #chart-data a {
-                    display: inline-block;
-                    margin:0 10px 5px 0;
-                }
-                #chart-data a.selected {
-                    color:#000;
-                    text-decoration: none;
-                }
-                #chart-data .custom-inputs {
-                    display: none;
-                }
-                #chart-data .custom-inputs input {
-                    margin-right: 10px;
-                }
-                #chart-data .data-types {
-                    margin: 0 0 10px 0;
-                }
         </style>
     </head>
 
-
     <body>
-
+        <div id="series-data"> </div>
         <div id="chart"></div>
-
-        <div id="chart-data">
-            <div class="series series-one">
-                <h3>Series One</h3>
-                <div class="data-types">
-                        percentage
-                        <input type="radio" name="series-one-type" value="percentage" checked>
-                        decimal
-                        <input type="radio" name="series-one-type" value="decimal">
-                </div>
-
-                <a href="#" class="selected" data-set="dataSet1">data set 1</a>
-                <a href="#" data-set="dataSet2">data set 2</a>
-                <a href="#" data-set="dataSet3">data set 3</a>
-                <a href="#" class="custom">custom</a>
-
-                <div class="custom-inputs">
-                    <input type="text" value="12" size="3"/>
-                    <input type="text" value="11.3" size="3"/>
-                    <input type="text" value="10" size="3"/>
-                    <input type="text" value="11.7" size="3"/>
-                    <input type="text" value="12.5" size="3"/>
-                    <input type="text" value="15" size="3"/>
-                </div>
-                
-            </div>
-            <div class="series series-two">
-                <h3>Series Two</h3>
-                <div class="data-types">
-                        percentage
-                        <input type="radio" name="series-two-type" value="percentage" >
-                        decimal
-                        <input type="radio" name="series-two-type" value="decimal" checked>
-                </div>
-                <a href="#" class="selected" data-set="dataSet1">data set 1</a>
-                <a href="#" data-set="dataSet2">data set 2</a>
-                <a href="#" data-set="dataSet3">data set 3</a>
-                <a href="#" class="custom">custom</a>
-                <div class="custom-inputs">
-                    <input type="text" value="2.3" size="3"/>
-                    <input type="text" value="4.6" size="3"/>
-                    <input type="text" value="12" size="3"/>
-                    <input type="text" value="19" size="3"/>
-                    <input type="text" value="22" size="3"/>
-                    <input type="text" value="40" size="3"/>
-                </div>
-            </div>
+        <div id="dummy-chart">
+            <h2>Select data to chart</h2>
+            <img src="http://i.imgur.com/K5Oz03t.png" />
         </div>
-
     </body>
+
 </html>
+
+

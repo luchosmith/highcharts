@@ -1,127 +1,312 @@
-﻿
+﻿var seriesData = [{
+  "Id": "103",
+  "Name": "Directory Ad Spending (Billions)",
+  "Note": "print only; includes yellow pages and other",
+  "Chart": false,
+  "Type": "Currency",
+  "Values": [
+    4.9,
+    4.56,
+    4.25,
+    4.08,
+    4.95
+  ],
+  "HasData": true,
+  "PublishedAt": "2015-03-01T05:00:00Z"
+},
+{
+    "Id": "353",
+    "Name": "Directory Ad Spending (% of total media ad spending)",
+    "Note": "print only; includes yellow pages and other",
+    "Chart": false,
+    "Type": "Percentage",
+    "Values": [
+        2.8,
+        2.4,
+        2.1,
+        2,
+        1.8
+    ],
+    "HasData": true,
+    "PublishedAt": "2015-03-01T05:00:00Z"
+},
+{
+    "Id": "145",
+    "Name": "Directory Ad Spending Growth",
+    "Note": "print only; includes yellow pages and other",
+    "Chart": false,
+    "Type": "Percentage",
+    "Values": [
+        -7.5,
+        -7,
+        -6.8,
+        -4,
+        -3
+    ],
+    "HasData": true,
+    "PublishedAt": "2015-03-01T05:00:00Z"
+},
+{
+  "Id": "67",
+  "Name": "Magazine  Ad Spending (Billions)",
+  "Note": "includes B2B, consumer, local and Sunday; print only",
+  "Chart": false,
+  "Type": "Currency",
+  "Values": [
+    15.09,
+    15.05,
+    15.1,
+    15.15,
+    15.23
+  ],
+  "HasData": true,
+  "PublishedAt": "2015-03-01T05:00:00Z"
+},
+{
+  "Id": "127",
+  "Name": "Magazine Ad Spending Growth",
+  "Note": "includes B2B, consumer, local and Sunday; print only",
+  "Chart": false,
+  "Type": "Percentage",
+  "Values": [
+    -0.3,
+    -0.2,
+    0.3,
+    0.4,
+    0.5
+  ],
+  "HasData": true,
+  "PublishedAt": "2015-03-01T05:00:00Z"
+},
+{
+    "Id": "351",
+    "Name": "Magazine Ad Spending (% of total media ad spending)",
+    "Note": "includes B2B, consumer, local and Sunday; print only",
+    "Chart": false,
+    "Type": "Percentage",
+    "Values": [
+        8.5,
+        8,
+        7.6,
+        7.3,
+        6.9
+    ],
+    "HasData": true,
+    "PublishedAt": "2015-03-01T05:00:00Z"
+},
+{
+  "Id": "63",
+  "Name": "Newspaper Ad Spending (Billions)",
+  "Note": "includes classifieds, national and retail; print only; eMarketer benchmarks its US newspaper ad spending projections against the Newspaper Association of America (NAA) data for which the last full year measured was 2013",
+  "Chart": false,
+  "Type": "Currency",
+  "Values": [
+    16.61,
+    16.12,
+    15.79,
+    15.63,
+    15.63
+  ],
+  "HasData": true,
+  "PublishedAt": "2015-03-01T05:00:00Z"
+},
+{
+  "Id": "350",
+  "Name": "Newspaper Ad Spending (% of total media ad spending)",
+  "Note": "includes classifieds, national and retail; print only; eMarketer benchmarks its US newspaper ad spending projections against the NAA, for which the last full year measured was 2013",
+  "Chart": false,
+  "Type": "Percentage",
+  "Values": [
+    9.3,
+    8.6,
+    7.9,
+    7.5,
+    7.1
+  ],
+  "HasData": true,
+  "PublishedAt": "2015-03-01T05:00:00Z"
+},
+{
+    "Id": "128",
+    "Name": "Newspaper Ad Spending Growth",
+    "Note": "includes classifieds, national and retail; print only; eMarketer benchmarks its US newspaper ad spending projections against the Newspaper Association of America (NAA) data for which the last full year measured was 2013",
+    "Chart": false,
+    "Type": "Percentage",
+    "Values": [
+        -4,
+        null,
+        -2,
+        -1,
+        0
+    ],
+    "HasData": true,
+    "PublishedAt": "2015-03-01T05:00:00Z"
+},
+{
+  "Id": "64",
+  "Name": "Outdoor Ad Spending (Billions)",
+  "Note": "includes alternative, billboards, cinema, street furniture and transit; eMarketer benchmarks its outdoor ad spending for the US against the Outdoor Advertising Association of America (OAAA) data for which the last full year measured was 2013",
+  "Chart": false,
+  "Type": "Currency",
+  "Values": [
+    7.17,
+    7.39,
+    7.58,
+    7.73,
+    7.85
+  ],
+  "HasData": true,
+  "PublishedAt": "2015-03-01T05:00:00Z"
+},
+{
+    "Id": "354",
+    "Name": "Outdoor Ad Spending (% of total media ad spending)",
+    "Note": "includes alternative, billboards, cinema, street furniture and transit; eMarketer benchmarks its US outdoor ad spending projections against the OAAA, for which the last full year measured was 2013",
+    "Chart": false,
+    "Type": "Percentage",
+    "Values": [
+        4,
+        3.9,
+        3.8,
+        3.7,
+        3.6
+    ],
+    "HasData": true,
+    "PublishedAt": "2015-03-01T05:00:00Z"
+},
+{
+  "Id": "129",
+  "Name": "Outdoor Ad Spending Growth",
+  "Note": "includes alternative, billboards, cinema, street furniture and transit; eMarketer benchmarks its outdoor ad spending for the US against the Outdoor Advertising Association of America (OAAA) data for which the last full year measured was 2013",
+  "Chart": false,
+  "Type": "Percentage",
+  "Values": [
+    3.1,
+    3.0,
+    2.6,
+    2.0,
+    1.5
+  ],
+  "HasData": true,
+  "PublishedAt": "2015-03-01T05:00:00Z"
+},
+{
+  "Id": "61",
+  "Name": "TV Ad Spending (Billions)",
+  "Note": "includes broadcast (network, spot and syndication) and cable TV",
+  "Chart": false,
+  "Type": "Currency",
+  "Values": [
+    68.54,
+    70.59,
+    73.77,
+    75.98,
+    78.64
+  ],
+  "HasData": true,
+  "PublishedAt": "2015-03-01T05:00:00Z"
+},
+{
+    "Id": "348",
+    "Name": "TV Ad Spending (% of total media ad spending)",
+    "Note": "includes broadcast (network, spot and syndication) and cable TV",
+    "Chart": false,
+    "Type": "Percentage",
+    "Values": [
+        38.5,
+        37.7,
+        37.1,
+        36.4,
+        35.8
+    ],
+    "HasData": true,
+    "PublishedAt": "2015-03-01T05:00:00Z"
+},
+{
+    "Id": "131",
+    "Name": "TV Ad Spending Growth",
+    "Note": "includes broadcast (network, spot and syndication) and cable TV",
+    "Chart": false,
+    "Type": "Percentage",
+    "Values": [
+        3.3,
+        3,
+        4.5,
+        3,
+        3.5
+    ],
+    "HasData": true,
+    "PublishedAt": "2015-03-01T05:00:00Z"
+},
+{
+  "Id": "25",
+  "Name": "Total Media Ad Spending (Billions)",
+  "Note": "includes digital (desktop/laptop and mobile), directories, magazines, newspapers, outdoor, radio and TV",
+  "Chart": false,
+  "Type": "Currency",
+  "Values": [
+    178.09,
+    187.45,
+    198.76,
+    208.56,
+    219.51
+  ],
+  "HasData": true,
+  "PublishedAt": "2015-03-01T05:00:00Z"
+}];
 
 
-// for colummn-line charts, where datalabels can sometimes overlap.
-// the default behavior is for highcharts to omit labels in this case.
-// this function repositions labels, and adjusts styles if needed.
-function adjustDataLabels(series) {
-
-    var sc = series.length, columnSeries, lineSeries, lineMarkerRadius;
-
-    // expecting only 2 series
-    if (sc != 2) {
-        return;
-    }
-
-    // we expect one series of type column and one of type line
-    if (series[0].options.type === 'column' && series[1].options.type === 'line'){
-        columnSeries = series[0].points;
-        lineSeries = series[1].points;
-        lineMarkerRadius = series[1].options.marker.radius || 12;
-    } else if (series[0].options.type === 'line' && series[1].options.type === 'column' ) {
-        lineSeries = series[0].points;
-        lineMarkerRadius = series[0].options.marker.radius;
-        columnSeries = series[1].points;
-    } else {
-        return;
-    }
-
-
-    // loop through the line series and adjust data labels
-    for (i = 0; i < lineSeries.length; i++) {
-
-        var lineLabel           = lineSeries[i].dataLabel,
-        lineLabelBottom         = lineLabel.y + lineLabel.height,
-        lineMarkerTop           = lineSeries[i].plotY - lineMarkerRadius,
-        lineMarkerBotttom       = lineSeries[i].plotY + lineMarkerRadius,
-        lineMarkerHeight        = lineMarkerRadius * 2,
-        columnLabel             = columnSeries[i].dataLabel,
-        columnTop               = columnSeries[i].plotY,
-        // conceptually the baseLine is 0, but we need the Y value of it
-        baseLineY               = columnSeries[i].shapeArgs.height + columnSeries[i].shapeArgs.y;
-
-
-
-        // this line label is inside the column
-        if ( lineLabel.y > columnTop ) {
-            lineLabel.css({
-                color : '#fff'
-            });
-        }
-
-        // this line label is outside the column
-        if (lineLabelBottom < columnLabel.y) {
-            lineLabel.css({
-                color : '#000'
-            });
-        }
-
-        // these labels overlap
-        if ( Math.abs(lineLabel.y - columnLabel.y) * 2 < (lineLabel.height + columnLabel.height) )
-        {
-            lineLabel.translate(
-                lineLabel.translateX,
-                columnTop
-            );
-            lineLabel.css({
-                color : '#fff'
-            });
-        }
-
-        // this column label overlaps the line marker
-        if ( Math.abs(columnLabel.y - lineMarkerTop) * 2 < columnLabel.height + lineMarkerHeight ) {
-             columnLabel.translate(
-                 columnLabel.translateX,
-                 lineMarkerTop - columnLabel.height
-             );
-        }
-
-        // the line label is actually below the base line
-        if ( lineLabelBottom > baseLineY  ) {
-            lineLabel.translate(
-                lineLabel.translateX,
-                baseLineY - lineLabel.height
-            );
-        }
-
-    }
-
-}
-
-
-var lineData = {
-    dataSet1 : [8.9, 8.7, 8, 7.5, 7.2, 6.9],
-    dataSet2 : [43.1, 56.1, 59.0, 60.4, 61.4, 61.7],
-    dataSet3 : [4.2, 20, 18, 40, 17, 19]
-}
-
-var barData = {
-    dataSet1 : [9.1, 11.1, 12.1, 14.1, 15.2, 16.2],
-    dataSet2 : [25.1, 37.8, 43.7, 48.2, 51.3, 53.1],
-    dataSet3 : [150, 160, 170, 180, 200, 220]
-}
-
-var highchartsData = {
+var highchartsDefaultConfig = {
 
     chart: {
         zoomType: 'xy',
-        marginBottom: 95,
-        marginTop: 70,
-        alignTicks: false,
+        marginBottom: 114,
+        marginTop: 37,
+        spacingLeft: 0,
+        spacingRight: 0,
+        height: '450',
         style: {
-            borderBottom:"6px solid #000",
-            borderTop:"6px solid #000"
+            borderTop:'2px solid #000'
         },
         events: {
             load: function(){
-                adjustDataLabels(this.series);
+                adjustChart(this.series);
             },
             redraw: function(){
                 var series = this.series;
                 setTimeout(function(){
-                    adjustDataLabels(series);
+                    adjustChart(series);
                 }, 500);
             }
+        }
+    },
+
+    title: {
+        align: 'left',
+        y: 13,
+        x: 0,
+        margin: 7,
+        text: 'Title Goes Here today. This is Fake Data',
+        useHTML: true,
+        style: {
+            fontFamily: 'Helvetica, Arial, sans-serif',
+            fontWeight: 'bold',
+            color: '#ff0000',
+            fontSize: '18px'
+        }
+    },
+
+    subtitle: {
+        align: 'left',
+        text: 'Central & Eastern Europe, 2013-2018',
+        useHTML: true,
+        style: {
+            fontFamily: 'Helvetica, Arial, sans-serif',
+            fontSize: '18px',
+            paddingTop: '4px',
+            paddingBottom: '1px',
+            display:'block',
+            width:'465px',
         }
     },
 
@@ -132,61 +317,48 @@ var highchartsData = {
         position: {
             align: 'left',
             x: 0,
-            y: -8
+            y: -21
         },
         style: {
             cursor: 'default',
-            color: '#666666',
-            fontSize: '14px',
-            fontFamily: 'Arial,sans-serif',
-            fontStyle:'italic'
+            color: '#666666',       
+            fontSize: '10px',
+            fontStyle:'italic',
         }
     },
-
-    navigation: {
-        buttonOptions: {
-            theme: {
-                'stroke-width': 1,
-                stroke: 'silver',
-                r: 0,
-                states: {
-                    hover: {
-                        fill: '#bada55'
-                    },
-                    select: {
-                        stroke: '#039',
-                        fill: '#bada55'
-                    }
-                }
-            }
-        }
-    },
-
 
     legend: {
+        layout: 'vertical',
+        align: 'left',
+        floating: true,
         itemStyle: {
             color: '#000',
             fontFamily: 'Arial,sans-serif',
             fontWeight:'bold',
-            fontSize: "12px"
+            fontSize: '13px'
         },
+        itemMarginBottom:5,
         borderWidth: 0,
-        symbolPadding: 10,
-        y: -7
+        symbolHeight: 14,
+        symbolWidth: 14,
+        x: -2,
+        y: -15
     },
 
     plotOptions: {
         column: {
-            pointWidth: 90,
+            pointWidth: 65,
             pointPadding:0,
             dataLabels: {
                 enabled: true,
                 crop: false,
                 overflow: 'none',
                 allowOverlap: true,
+                useHTML: true,
                 style: {
                     fontWeight: 'bold',
-                    fontSize: '15px',
+                    fontFamily: 'Arial,sans-serif',
+                    fontSize: '14px',
                     color: '#000'
                 }
             },
@@ -200,7 +372,7 @@ var highchartsData = {
                 },
             marker: {
                 lineColor: '#FF0000',
-                radius: 12,
+                radius:8,
                 states: {
                     hover: {
                         enabled: false
@@ -212,47 +384,35 @@ var highchartsData = {
                 allowOverlap: true,
                 crop: false,
                 overflow: 'none',
-                format: "{y} %",
+                format: '{y} %',
                 y:35,
                 verticalAlign: 'bottom',
                 style: {
-                    color: "#fff",
-                    fontFamily: '"LinotypeUniversW01-Heav 723715","Arial Narrow",Arial,sans-serif',
-                    fontSize: "15px",
-                    textShadow: 'none'
+                    color: '#fff',
+                    fontSize: '14px',
+                    textShadow: 'none',
+                    fontFamily: 'Arial,sans-serif',
                 }
             }
         }
     },
 
-    title: {
-        y: 20,
-        align: 'left',
-        text: 'Title Goes Here. This is Fake Data, United States, 2013-2018',
-        width:'1000',
-        style:
-        {
-            color: "#ff0000",
-            fontFamily: '"LinotypeUniversW01-Heav 723715","Arial Narrow",Arial,sans-serif',
-            fontSize: "28px",
-            paddingBottom:"4px"
-        }
-    },
-
     xAxis: [{
-        categories: ["2013","2014","2015","2016","2017","2018"],
+        categories: ['2014','2015','2016','2017','2018'],
         labels: {
                 enabled: true,
-                y:30,
+                y:20,
                 style: {
                     color: '#000',
-                    fontFamily: '"LinotypeUniversW01-Heav 723715","Arial Narrow",Arial,sans-serif',
-                    fontSize: "18px"
+                    fontSize: '14px',
+                    fontWeight: 'bold',
+                    fontFamily: 'Arial, sans-serif'
                 }
             },
         tickWidth: 0,
+        lineWidth: 1
     }],
-    // Line
+
     yAxis: [{
             labels: {
                     enabled: false
@@ -264,11 +424,9 @@ var highchartsData = {
                 text: null
             }
         },
-        // Bar 
         {
             labels: {
                 enabled: false,
-                format: '${value:,.0f}'
             },
             gridLineWidth: 0,
             minorGridLineWidth: 0,
@@ -276,129 +434,329 @@ var highchartsData = {
                 text: null,
             },
             opposite: false
-        }],
-        tooltip: {
-            enabled: false,
+    }],
 
-       },
+    tooltip: {
+        enabled: false
+    }
  
-        series: [
-        {
-            name: 'Magazine  Ad Spending (billions)',
-            color: '#000000',
-            type: 'column',
-            yAxis: 1, // TODO: what is this and how does it pertain to dynamic data?
-            data: [9.1, 11.1, 12.1, 14.1, 15.2, 16.2]
-        },
-        {
-            name: 'Magazine Ad Spending (% of total media ad spending)',
-            color: '#ff0000',
-            type: 'line',
-            data: [8.9, 8.7, 8, 7.5, 7.2, 6.9]
-        }
-    ]
 };
 
 
 
-function getCustomData(inputs){
-    var data = [];
-    inputs.each(function( index ) {
-        data.push(parseFloat($(this).val()))  ;
-    });
-    return data;
+/** 
+  * Highcharts by default will hide labels in the event of an overlap
+  * This function handles overlapping images in a way that all data is preserved
+  * It basically uses bounding boxes to detect collision then
+  * makes use of the SVG translate() method to reposition labels as needed
+  *
+*/
+function repositionLabels(series) {
+
+    
+    var sc = series.length, columnSeries, lineSeries, lineMarkerRadius, chart;
+
+    if (sc != 2) {
+        return;
+    }
+
+    // we expect one series of type column and one of type line
+    // single and double columns don't require these adjustments
+    if (series[0].options.type === 'column' && series[1].options.type === 'line'){
+        columnSeries = series[0].points;
+        lineSeries = series[1].points;
+        lineMarkerRadius = series[1].options.marker.radius || 9;
+    } else if (series[0].options.type === 'line' && series[1].options.type === 'column' ) {
+        lineSeries = series[0].points;
+        lineMarkerRadius = series[0].options.marker.radius;
+        columnSeries = series[1].points;
+    } else {
+        return;
+    }
+
+
+    for (i = 0; i < lineSeries.length; i++) {
+
+        var lineLabel        = lineSeries[i].dataLabel,
+        lineLabelBottom      = lineLabel.y + lineLabel.height,
+        lineMarkerTop        = lineSeries[i].plotY - lineMarkerRadius,
+        lineMarkerBotttom    = lineSeries[i].plotY + lineMarkerRadius,
+        lineMarkerHeight     = lineMarkerRadius * 2,
+        columnLabel          = columnSeries[i].dataLabel,
+        columnTop            = columnSeries[i].plotY,
+        xAxisY               = columnSeries[i].shapeArgs.height + columnSeries[i].shapeArgs.y; // conceptually the baseLine is 0, but we need the Y value of it
+
+
+        // this line label is inside the column - paint it white
+        if ( lineLabel.y > columnTop ) {
+            lineLabel.css( {color : '#fff'} );
+        }
+
+        // this line label is outside the column - paint it black
+        if (lineLabelBottom < columnLabel.y) {
+            lineLabel.css( {color : '#000'} );
+        }
+
+        // these labels overlap - push the line label down into the column and paint it black
+        if ( Math.abs(lineLabel.y - columnLabel.y) * 2 < (lineLabel.height + columnLabel.height) )
+        {
+            lineLabel.translate( lineLabel.translateX, columnTop );
+            lineLabel.css( {color : '#fff'} );
+        }
+
+        // this column label overlaps the line marker - push it above the marker
+        if ( Math.abs(columnLabel.y - lineMarkerTop) * 2 < columnLabel.height + lineMarkerHeight ) {
+             columnLabel.translate( columnLabel.translateX, lineMarkerTop - columnLabel.height );
+        }
+
+        // the line label is actually below the x axis - push it up a bit
+        if ( lineLabelBottom > xAxisY  ) {
+            lineLabel.translate( lineLabel.translateX, xAxisY - lineLabel.height );
+        }
+
+    }
 }
+
+
+/** 
+  * this deals with the limitations of highcharts config options
+  * it makes use of the Renderer() method provided by Highcharts
+  * to apply the desired look to the chart
+  *
+*/
+function adjustChart(series) {
+
+    var chart = series[0].chart;
+
+    //add a line under the subtitle 
+    var subTitleBoxOffset = $(chart.container).find('.highcharts-subtitle').offset(),
+    chartOffset = $('#chart').offset(),
+    subTitleHeight = $(chart.container).find('.highcharts-subtitle').outerHeight(),
+    subtitleUnderlineY = (subTitleBoxOffset.top - chartOffset.top) + subTitleHeight;
+
+    chart.renderer.path(['M', 0, subtitleUnderlineY, 'L', $(chart.container).width(),subtitleUnderlineY])
+        .attr({
+            'stroke-width': .5,
+            stroke: '#000'
+        })
+        .add();
+
+    
+    //draw a line below the credit
+    var lineY = $(chart.container).height() - 11 -4; // leave room for branding (11)
+        chart.renderer.path(['M', 0, lineY, 'L', $(chart.container).width(), lineY])
+        .attr({
+            'stroke-width': .5,
+            stroke: '#000'
+        })
+        .add();
+
+    // add branding/url
+    var logoX = $(chart.container).width() - 115; //115 width of logo
+    var logoY = $(chart.container).height() - 11 -1; // 11 height of logo
+
+    // TODO: can this be a local path ?
+    chart.renderer.image('http://i.imgur.com/gVpmmRR.png',logoX,logoY,115,11).add();
+
+    repositionLabels(series);
+
+}
+
+
+
+function buildColumnData(rawData, yAxis) {
+    
+    return {
+        name : rawData.Name,
+        color: yAxis ? '#ff0000' : '#000000',
+        type : 'column',
+        data : rawData.Values,
+        yAxis: yAxis ? 1 : 0
+    };
+}
+
+function buildLineData(rawData) {
+    return {
+        name : rawData.Name,
+        color : '#ff0000',
+        type: 'line',
+        data : rawData.Values,
+        yAxis: 1
+    };
+}
+
+
+function destroyChart() {
+  if ( window.myChart ){
+    window.myChart.destroy();
+    window.myChart = undefined;
+    $('#dummy-chart').fadeIn();
+  }
+}
+
+/** 
+  * Highcharts automatically calculates the min/max values 
+  * of a chart however, this can lead to unexpected results
+  * this function gets the highest and lowest values in a series
+  * and adjusts the numbers as needed
+  *
+*/
+function getExtremes(arrayA, arrayB) {
+
+    var min, max, combinedArray, numberLength, multiplier;
+
+    if( arrayB ) {
+        combinedArray = arrayA.concat(arrayB);
+    } else {
+        combinedArray = arrayA;
+    }
+
+    // the higest value in the series
+    max = Math.max.apply(null, combinedArray);
+
+    // adjust for the chart
+    if (max <= 0) { max = 0.1; } else                            // a max >= 0 throws everything off
+    if (max < 1)  { max += (max * .2); } else                    // for lower values, use a higher percentage
+    if (max < 10) { max = Math.ceil(max += (max * .15)); } else  // use a lower percentage, but round it up
+    max = Math.ceil(max += (max * .1));                          // for a max > 10, 10% rounded is enough
+
+    // the lowest value in the series
+    min = Math.min.apply(null, combinedArray);
+
+    if ( min >= 0 ) {min = 0; } else // let's keep the default behavior
+    min += (min * .1); // for values below the x axis, add some padding on the bottom
+
+    return {
+        max: max,
+        min: min
+    }
+}
+
+
+
+/** 
+  * Highcharts automatically calculates the min/max values 
+  * of a chart however, this can lead to unexpected results
+  * this function gets the highest and lowest values in a series
+  * and adjusts the numbers as needed
+  *
+*/
+function createChart(rawSeriesData) {
+
+    destroyChart();
+
+    var series = [],
+    extremes,
+    chartConfig = $.extend(true, {}, highchartsDefaultConfig);
+
+    if ( rawSeriesData.length < 1 || rawSeriesData.length > 2 ) {
+        return;
+    }
+
+    if ( rawSeriesData.length == 1 ) {
+        /**
+         *   SINGLE COLUMN
+         **/
+        series.push( buildColumnData(rawSeriesData[0]) );
+        chartConfig.chart.alignTicks = false;
+        chartConfig.chart.marginBottom = 105;
+
+        extremes = getExtremes(rawSeriesData[0].Values);
+        chartConfig.yAxis[0].max = extremes.max;
+        chartConfig.yAxis[0].min = extremes.min;
+
+    } else {
+
+        extremes = getExtremes(rawSeriesData[0].Values ,rawSeriesData[1].Values);
+
+        /**
+         *   DOUBLE COLUMN
+         **/
+        if ( rawSeriesData[0].Type ===  rawSeriesData[1].Type ) {
+            series.push( buildColumnData(rawSeriesData[0]) );
+            series.push( buildColumnData(rawSeriesData[1], true) );
+            chartConfig.plotOptions.column.pointWidth = undefined;
+            chartConfig.plotOptions.column.groupPadding = 0.1;
+            chartConfig.plotOptions.column.dataLabels.style.fontSize = '12px';
+            chartConfig.chart.alignTicks = false;
+
+            // set the max value
+            chartConfig.yAxis[0].max = extremes.max;
+            chartConfig.yAxis[1].max = extremes.max;
+
+            if ( extremes.min < 0 ) {
+                chartConfig.yAxis[0].min = extremes.min;
+                chartConfig.yAxis[1].min = extremes.min;
+            }
+
+        }else {
+
+        /**
+         *   BAR - LINE 
+         **/
+
+            // TODO: we're assuming if they are not the same, one is a percentage
+            // There could be a scenario where this is not the case
+            if ( rawSeriesData[0].Type === 'Percentage' ) {
+                // push line data last, so it's one top, or, set the z index
+                series.push( buildColumnData(rawSeriesData[1]) );
+                series.push( buildLineData(rawSeriesData[0]) );
+                extremes = getExtremes(rawSeriesData[1].Values);
+                chartConfig.yAxis[0].max = extremes.max;
+            } else {
+                // push line data last, so it's one top, or, set the z index
+                series.push( buildColumnData(rawSeriesData[0]) );
+                series.push( buildLineData(rawSeriesData[1]) );
+                extremes = getExtremes(rawSeriesData[0].Values);
+                chartConfig.yAxis[0].max = extremes.max;
+            }
+            // For the line in a bar-line chart
+            // we want to keep it down
+            // a max of 50 does the trick, however:
+            // TODO: this may need to be adjusted dynamically
+            chartConfig.yAxis[1].max = 50;
+            
+            chartConfig.chart.alignTicks = false;
+        }
+    }
+
+    chartConfig.series = series;
+    $('#dummy-chart').hide();
+    $('#chart').highcharts(chartConfig);
+    window.myChart = $("#chart").highcharts();
+}
+
+
 
 
 $(document).ready(function(){
 
-    var defaultData = $.extend(true, {}, highchartsData);
-    $("#chart").highcharts(defaultData);
-    window.myChart = $("#chart").highcharts();
+    $.each(seriesData, function(index, item){
+      var el = '<div><input type="checkbox" id="id-' + item.Id + '"><label for="id-' + item.Id + '">' + item.Name + '</label></div>';
+      $('#series-data').append(el);
+    });
 
-    /************
-      note: by default 
-      series[0] is the 'column' 
-      and series[1] is the 'line'
+    $('#series-data input').click(function(){
+        var selectedData = [];
 
-    *************/
-
-    // data type changed - create a new chart
-    $('input[type="radio"]').click(function(){
-
-        var newChartData = $.extend(true, {}, highchartsData);
-        var seriesOneType = $('input[name=series-one-type]:checked').val();
-        var seriesTwoType = $('input[name=series-two-type]:checked').val();
-
-        if ( seriesOneType  === seriesTwoType ) {
-
-            newChartData.series[0].type = 'column';
-            newChartData.series[1].type = 'column';
-            // todo: do colors matter?
-            newChartData.plotOptions.column.pointWidth = 32;
-
-        } else if ( seriesOneType === 'percentage' ) {
-
-            newChartData.series[0].type = 'column';
-            newChartData.series[0].color = '#000000';
-            newChartData.series[0].zIndex = 0;
-
-            newChartData.series[1].type = 'line';
-            newChartData.series[1].color = '#FF0000';
-            newChartData.series[1].zIndex = 1;
-
-        } else {
-
-            newChartData.series[0].type = 'line';
-            newChartData.series[0].color = '#FF0000';
-            newChartData.series[0].zIndex = 1;
-
-            newChartData.series[1].type = 'column';
-            newChartData.series[1].color = '#000000';
-            newChartData.series[1].zIndex = 0;
+        if ( !$('#series-data input:checked').size() ) {
+            destroyChart();
+            return;
         }
 
-        window.myChart.destroy();
-        $("#chart").highcharts(newChartData);
-        window.myChart = $("#chart").highcharts();
-        
-    });
-
-
-    $('.series-one a').click(function(e){
-        var dataSet;
-        e.preventDefault();
-        $('.series-one a').removeClass('selected');
-        $(this).addClass('selected');
-        if ( $(this).is('.custom') ){
-            $('.series-one .custom-inputs').show();
-            dataSet = getCustomData( $('.series-one .custom-inputs input') );
+        if ( $('#series-data input:checked').size() == 2 ) {
+          $('#series-data input:not(:checked)').attr('disabled',true);
         } else {
-            dataSet = lineData[$(this).attr('data-set')];
+            $('#series-data input').removeAttr('disabled');
         }
 
-        myChart.series[1].setData(dataSet);
+        $('#series-data input:checked').each(function(index, el){
+            var i = $(this).parent().index();
+            selectedData.push(seriesData[i]);
+        });
+
+        createChart(selectedData);
+
     });
-
-    $('.series-two a').click(function(e){
-        var dataSet;
-        e.preventDefault();
-        $('.series-two a').removeClass('selected');
-        $(this).addClass('selected');
-        if ( $(this).is('.custom') ){
-            $('.series-two .custom-inputs').show();
-            dataSet = getCustomData( $('.series-two .custom-inputs input') );
-        } else {
-            dataSet = barData[$(this).attr('data-set')];
-        }
-
-        myChart.series[0].setData(dataSet);
-    });
-
-    $('.custom-inputs input[type=text]').blur(function(){
-        $(this).parents('.series').find('.custom').click();
-    });
-
-
 
 });
