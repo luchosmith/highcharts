@@ -259,107 +259,107 @@
 var highchartsDefaultConfig = {
 
     chart: {
-        zoomType: 'xy',
-        marginBottom: 114,
-        marginTop: 37,
-        spacingLeft: 0,
-        spacingRight: 0,
-        height: '450',
+        zoomType       : 'xy',
+        marginBottom   : 125,
+        marginTop      : 37,
+        spacingLeft    : 0,
+        spacingRight   : 0,
+        height         : 450,
         style: {
             borderTop:'2px solid #000'
         },
         events: {
-            load: function(){
+            load  : function(){
                 adjustChart(this.series);
             },
             redraw: function(){
                 var series = this.series;
                 setTimeout(function(){
                     adjustChart(series);
-                }, 500);
+                }, 500); //because of the animation
             }
         }
     },
 
     title: {
-        align: 'left',
-        y: 13,
-        x: 0,
-        margin: 7,
-        text: 'Title Goes Here today. This is Fake Data',
-        useHTML: true,
+        align   : 'left',
+        y       : 13,
+        x       : 0,
+        margin  : 7,
+        text    : 'Title Goes Here today. This is Fake Data',
+        useHTML : true,
         style: {
-            fontFamily: 'Helvetica, Arial, sans-serif',
-            fontWeight: 'bold',
-            color: '#ff0000',
-            fontSize: '18px'
+            fontFamily  : 'Helvetica, Arial, sans-serif',
+            fontWeight  : 'bold',
+            color       : '#ff0000',
+            fontSize    : '18px'
         }
     },
 
     subtitle: {
-        align: 'left',
-        text: 'Central & Eastern Europe, 2013-2018',
-        useHTML: true,
+        align   : 'left',
+        text    : 'Central & Eastern Europe, 2013-2018',
+        useHTML : true,
         style: {
-            fontFamily: 'Helvetica, Arial, sans-serif',
-            fontSize: '18px',
-            paddingTop: '4px',
-            paddingBottom: '1px',
-            display:'block',
-            width:'465px',
+            fontFamily    : 'Helvetica, Arial, sans-serif',
+            fontSize      : '18px',
+            paddingTop    : '4px',
+            paddingBottom : '1px',
+            display       : 'block',
+            width         : '465px',
         }
     },
 
     credits: {
-        enabled: true,
-        text: 'Source: eMarketer Forecasting Team, 2014 (see below for complete notes and methodologies).',
-        href: '',
-        position: {
-            align: 'left',
-            x: 0,
-            y: -21
+        enabled  : true,
+        text     : 'Source: eMarketer Forecasting Team, 2014 (see below for complete notes and methodologies).',
+        href     : '',
+        position : {
+            align : 'left',
+            x     : 0,
+            y     : -21
         },
         style: {
-            cursor: 'default',
-            color: '#666666',       
-            fontSize: '10px',
-            fontStyle:'italic',
+            cursor    : 'default',
+            color     : '#666666',       
+            fontSize  : '10px',
+            fontStyle : 'italic',
         }
     },
 
     legend: {
-        layout: 'vertical',
-        align: 'left',
-        floating: true,
+        layout   : 'vertical',
+        align    : 'left',
+        floating : true,
         itemStyle: {
-            color: '#000',
-            fontFamily: 'Arial,sans-serif',
-            fontWeight:'bold',
-            fontSize: '13px'
+            color         : '#000',
+            fontFamily    : 'Arial,sans-serif',
+            fontWeight    : 'bold',
+            fontSize      : '13px'
         },
-        itemMarginBottom:5,
-        borderWidth: 0,
-        symbolHeight: 14,
-        symbolWidth: 14,
-        x: -2,
-        y: -15
+        itemMarginBottom :7,
+        borderWidth      : 0,
+        symbolHeight     : 14,
+        symbolWidth      : 14,
+        x                : -2,
+        y                : -22
     },
 
     plotOptions: {
         column: {
-            pointWidth: 65,
-            pointPadding:0,
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                overflow: 'none',
-                allowOverlap: true,
-                useHTML: true,
-                style: {
-                    fontWeight: 'bold',
-                    fontFamily: 'Arial,sans-serif',
-                    fontSize: '14px',
-                    color: '#000'
+            pointWidth   : 65,
+            pointPadding :0,
+            dataLabels   : {
+                enabled      : true,
+                crop         : false,
+                overflow     : 'none',
+                allowOverlap : true,
+                useHTML      : true,
+                style        : {
+                    fontWeight : 'bold',
+                    fontFamily : 'Arial,sans-serif',
+                    fontSize   : '14px',
+                    color      : '#000'
                 }
             },
         },
@@ -371,27 +371,27 @@ var highchartsDefaultConfig = {
                     }
                 },
             marker: {
-                lineColor: '#FF0000',
-                radius:8,
-                states: {
+                lineColor : '#FF0000',
+                radius    :8,
+                states    : {
                     hover: {
                         enabled: false
                     }
                 }
             },
             dataLabels: {
-                enabled: true,
-                allowOverlap: true,
-                crop: false,
-                overflow: 'none',
-                format: '{y} %',
-                y:35,
-                verticalAlign: 'bottom',
+                enable        : true,
+                allowOverlap  : true,
+                crop          : false,
+                overflow      : 'none',
+                format        : '{y} %',
+                y             : 35,
+                verticalAlign : 'bottom',
                 style: {
-                    color: '#fff',
-                    fontSize: '14px',
-                    textShadow: 'none',
-                    fontFamily: 'Arial,sans-serif',
+                    color       : '#fff',
+                    fontSize    : '14px',
+                    textShadow  : 'none',
+                    fontFamily  : 'Arial,sans-serif',
                 }
             }
         }
@@ -400,13 +400,13 @@ var highchartsDefaultConfig = {
     xAxis: [{
         categories: ['2014','2015','2016','2017','2018'],
         labels: {
-                enabled: true,
-                y:20,
-                style: {
-                    color: '#000',
-                    fontSize: '14px',
-                    fontWeight: 'bold',
-                    fontFamily: 'Arial, sans-serif'
+                enabled : true,
+                y       : 20,
+                style   : {
+                    color      : '#000',
+                    fontSize   : '14px',
+                    fontWeight : 'bold',
+                    fontFamily : 'Arial, sans-serif'
                 }
             },
         tickWidth: 0,
@@ -417,9 +417,9 @@ var highchartsDefaultConfig = {
             labels: {
                     enabled: false
             },
-            gridLineWidth: 0,
-            minorGridLineWidth: 0,
-            opposite: true,
+            gridLineWidth       : 0,
+            minorGridLineWidth  : 0,
+            opposite            : true,
             title: {
                 text: null
             }
@@ -428,8 +428,8 @@ var highchartsDefaultConfig = {
             labels: {
                 enabled: false,
             },
-            gridLineWidth: 0,
-            minorGridLineWidth: 0,
+            gridLineWidth      : 0,
+            minorGridLineWidth : 0,
             title: {
                 text: null,
             },
@@ -463,13 +463,13 @@ function repositionLabels(series) {
     // we expect one series of type column and one of type line
     // single and double columns don't require these adjustments
     if (series[0].options.type === 'column' && series[1].options.type === 'line'){
-        columnSeries = series[0].points;
-        lineSeries = series[1].points;
+        columnSeries     = series[0].points;
+        lineSeries       = series[1].points;
         lineMarkerRadius = series[1].options.marker.radius || 9;
     } else if (series[0].options.type === 'line' && series[1].options.type === 'column' ) {
-        lineSeries = series[0].points;
+        lineSeries       = series[0].points;
         lineMarkerRadius = series[0].options.marker.radius;
-        columnSeries = series[1].points;
+        columnSeries     = series[1].points;
     } else {
         return;
     }
@@ -484,7 +484,8 @@ function repositionLabels(series) {
         lineMarkerHeight     = lineMarkerRadius * 2,
         columnLabel          = columnSeries[i].dataLabel,
         columnTop            = columnSeries[i].plotY,
-        xAxisY               = columnSeries[i].shapeArgs.height + columnSeries[i].shapeArgs.y; // conceptually the baseLine is 0, but we need the Y value of it
+        xAxisY               = columnSeries[i].shapeArgs.height + columnSeries[i].shapeArgs.y; 
+                             // conceptually the x axis is 0, but we need the Y value of it
 
 
         // this line label is inside the column - paint it white
@@ -518,6 +519,8 @@ function repositionLabels(series) {
 }
 
 
+
+
 /** 
   * this deals with the limitations of highcharts config options
   * it makes use of the Renderer() method provided by Highcharts
@@ -529,10 +532,10 @@ function adjustChart(series) {
     var chart = series[0].chart;
 
     //add a line under the subtitle 
-    var subTitleBoxOffset = $(chart.container).find('.highcharts-subtitle').offset(),
-    chartOffset = $('#chart').offset(),
-    subTitleHeight = $(chart.container).find('.highcharts-subtitle').outerHeight(),
-    subtitleUnderlineY = (subTitleBoxOffset.top - chartOffset.top) + subTitleHeight;
+    var subTitleOffset    = $(chart.container).find('.highcharts-subtitle').offset(),
+    chartOffset           = $('#chart').offset(),
+    subTitleHeight        = $(chart.container).find('.highcharts-subtitle').outerHeight(),
+    subtitleUnderlineY    = (subTitleOffset.top - chartOffset.top) + subTitleHeight;
 
     chart.renderer.path(['M', 0, subtitleUnderlineY, 'L', $(chart.container).width(),subtitleUnderlineY])
         .attr({
@@ -540,7 +543,6 @@ function adjustChart(series) {
             stroke: '#000'
         })
         .add();
-
     
     //draw a line below the credit
     var lineY = $(chart.container).height() - 11 -4; // leave room for branding (11)
@@ -567,21 +569,21 @@ function adjustChart(series) {
 function buildColumnData(rawData, yAxis) {
     
     return {
-        name : rawData.Name,
-        color: yAxis ? '#ff0000' : '#000000',
-        type : 'column',
-        data : rawData.Values,
-        yAxis: yAxis ? 1 : 0
+        name  : rawData.Name,
+        color : yAxis ? '#ff0000' : '#000000',
+        type  : 'column',
+        data  : rawData.Values,
+        yAxis : yAxis ? 1 : 0
     };
 }
 
 function buildLineData(rawData) {
     return {
-        name : rawData.Name,
+        name  : rawData.Name,
         color : '#ff0000',
-        type: 'line',
-        data : rawData.Values,
-        yAxis: 1
+        type  : 'line',
+        data  : rawData.Values,
+        yAxis : 1
     };
 }
 
@@ -593,6 +595,7 @@ function destroyChart() {
     $('#dummy-chart').fadeIn();
   }
 }
+
 
 /** 
   * Highcharts automatically calculates the min/max values 
@@ -610,21 +613,18 @@ function getExtremes(arrayA, arrayB) {
     } else {
         combinedArray = arrayA;
     }
-
-    // the higest value in the series
-    max = Math.max.apply(null, combinedArray);
-
-    // adjust for the chart
+                                            
+    max = Math.max.apply(null, combinedArray);                   // the higest value in the series
+                                                                 // adjust for the chart:
     if (max <= 0) { max = 0.1; } else                            // a max >= 0 throws everything off
     if (max < 1)  { max += (max * .2); } else                    // for lower values, use a higher percentage
-    if (max < 10) { max = Math.ceil(max += (max * .15)); } else  // use a lower percentage, but round it up
+    if (max < 10) { max = Math.ceil(max += (max * .1)); } else   // use a lower percentage, but round it up
     max = Math.ceil(max += (max * .1));                          // for a max > 10, 10% rounded is enough
 
-    // the lowest value in the series
-    min = Math.min.apply(null, combinedArray);
-
-    if ( min >= 0 ) {min = 0; } else // let's keep the default behavior
-    min += (min * .1); // for values below the x axis, add some padding on the bottom
+    min = Math.min.apply(null, combinedArray);                   // the lowest value in the series
+                                                                 // adjusted: 
+    if ( min >= 0 ) { min = 0; } else                            // let's keep the default behavior
+    min = Math.floor(min += (min * .1));                         // push the x axis down a bit
 
     return {
         max: max,
@@ -658,12 +658,12 @@ function createChart(rawSeriesData) {
          *   SINGLE COLUMN
          **/
         series.push( buildColumnData(rawSeriesData[0]) );
-        chartConfig.chart.alignTicks = false;
-        chartConfig.chart.marginBottom = 105;
-
         extremes = getExtremes(rawSeriesData[0].Values);
-        chartConfig.yAxis[0].max = extremes.max;
-        chartConfig.yAxis[0].min = extremes.min;
+
+        chartConfig.chart.alignTicks     = false;
+        chartConfig.chart.marginBottom   = 105;
+        chartConfig.yAxis[0].max         = extremes.max;
+        chartConfig.yAxis[0].min         = extremes.min;
 
     } else {
 
@@ -675,19 +675,15 @@ function createChart(rawSeriesData) {
         if ( rawSeriesData[0].Type ===  rawSeriesData[1].Type ) {
             series.push( buildColumnData(rawSeriesData[0]) );
             series.push( buildColumnData(rawSeriesData[1], true) );
-            chartConfig.plotOptions.column.pointWidth = undefined;
-            chartConfig.plotOptions.column.groupPadding = 0.1;
-            chartConfig.plotOptions.column.dataLabels.style.fontSize = '12px';
-            chartConfig.chart.alignTicks = false;
 
-            // set the max value
-            chartConfig.yAxis[0].max = extremes.max;
-            chartConfig.yAxis[1].max = extremes.max;
-
-            if ( extremes.min < 0 ) {
-                chartConfig.yAxis[0].min = extremes.min;
-                chartConfig.yAxis[1].min = extremes.min;
-            }
+            chartConfig.plotOptions.column.pointWidth                 = undefined;
+            chartConfig.plotOptions.column.groupPadding               = 0.1;
+            chartConfig.plotOptions.column.dataLabels.style.fontSize  = '12px';
+            chartConfig.chart.alignTicks                              = false;
+            chartConfig.yAxis[0].max                                  = extremes.max;
+            chartConfig.yAxis[1].max                                  = extremes.max;
+            chartConfig.yAxis[0].min                                  = extremes.min;
+            chartConfig.yAxis[1].min                                  = extremes.min;
 
         }else {
 
