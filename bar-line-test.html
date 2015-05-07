@@ -6,6 +6,7 @@
         <link href='http://fonts.googleapis.com/css?family=Oswald:300,400,700' rel='stylesheet' type='text/css'>
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
         <script src="http://code.highcharts.com/highcharts.js"></script>
+        <script src="http://code.highcharts.com/modules/exporting.js"></script>
         <script src="highchartsData.js"></script>
         <style>
                 * {
@@ -14,8 +15,14 @@
                 body {
                     padding:20px 0 0 0px;
                 }
+                #title, #subtitle {
+                    float:left;
+                    padding: 5px 10px;
+                    margin: 0 20px 20px 0;
+                }
                 #series-data {
                     float:left;
+                    clear:left;
                     padding: 15px;
                     margin: 0 30px 0 0;
                     font-size:.8em;
@@ -36,17 +43,28 @@
                     border-bottom: 1px solid #aaa;
                     color:#eee;
                 }
+                #export-chart {
+                    float:left;
+                    margin-left:15px;
+                }
 
         </style>
     </head>
 
     <body>
+        <input id="title" type="text" value="" placeholder="Enter title" size="75" />
+        <input id="subtitle" type="text" value="" placeholder="Geography and dates" size="40" />
         <div id="series-data"> </div>
         <div id="chart"></div>
+        <!--
         <div id="dummy-chart">
             <h2>Select data to chart</h2>
             <img src="http://i.imgur.com/K5Oz03t.png" />
         </div>
+    -->
+        <!--
+            <div id="export-chart"><button disabled="disabled">Export</button></div>
+        -->
     </body>
 
 </html>
