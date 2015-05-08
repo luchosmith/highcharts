@@ -610,6 +610,7 @@
                 console.log('in there...');
                 var columnLabel = columnSeries[i].dataLabel;
                 console.log(columnLabel);
+                columnLabel.div.style.webkitTransform = "rotate(-45deg)";
             }
         }
 
