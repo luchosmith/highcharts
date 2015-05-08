@@ -16,7 +16,7 @@
 },
 {
   "Id": "103",
-  "Name": "Directory Ad Spending Pluse Extra Crap to Make this long (Billions)",
+  "Name": "Directory Ad Spending Pluse Some Extra Crap to Make This Super Duper Long (Billions)",
   "Note": "print only; includes yellow pages and other",
   "Chart": false,
   "Type": "Currency",
@@ -271,6 +271,7 @@
   "PublishedAt": "2015-03-01T05:00:00Z"
 }];
 
+
 (function (H) {
 
     var highchartsDefaultConfig = {
@@ -458,75 +459,58 @@
         },
 
         exporting : {
-            sourceWidth  : 465,
+            sourceWidth : 465,
             sourceHeight : 455 // slighty bigger to give branding some room
         }
 
     };
 
 
+    /** 
+      * Highcharts does not properly redraw after resetting margins and height
+      * The only option is destroying and recreating the chart with the new options
+      * Because this function is called on chart load,
+      * the load event callback needs to be redefined to exclude this
+      * also, because the 'load' process was technically interrupted the chart can get into a bad state
+      * - it renders just fine, but attempting to destroy it can cause an error.
+      * That will be handle by a try/catch. Since new charts replace old ones,
+      * the only consequence is a potential memory leak.
+      * as this only applies to charts with two long (or one extremley long) legend
+      * it should do until a better solution is found
+      *
+    */
     function adjustLegend(series) {
 
-        var chartBBox = document.getElementById('chart').getBoundingClientRect();
+        var chartBB = document.getElementById('chart').getBoundingClientRect(),
+        legendBB = document.getElementsByClassName('highcharts-legend')[0].getBoundingClientRect(),
+        legendBoxTop = legendBB.top - chartBB.top,
+        seriesGroupBB = document.getElementsByClassName('highcharts-series-group')[0].getBoundingClientRect(),
+        seriesGroupBottom = seriesGroupBB.bottom - chartBB.top,
+        diff = legendBoxTop - seriesGroupBottom,
+        optimalDistance = 25,
+        adjustment = Math.ceil( optimalDistance - diff + 8), //give it a little extra room
+        currentOptions,
+        newOptions = {};
 
-        // get the length of the legend text box
-        var legendContainers = document.getElementsByClassName('highcharts-legend-item');
+        if ( diff < optimalDistance ) {
 
-        for (var i=0; i<legendContainers.length; i++) {
+            var currentOptions = series[0].chart.options; //copy existing options
 
-            var textElement = legendContainers[i].children[0],
-            textBB = textElement.getBoundingClientRect();
+            currentOptions.chart.marginBottom = series[0].chart.options.chart.marginBottom + adjustment;
+            currentOptions.chart.height = series[0].chart.options.chart.height + adjustment;
+            currentOptions.exporting.sourceHeight = series[0].chart.options.chart.height + adjustment;
+            currentOptions.chart.events.load = function () {
+                adjustChart(this.series); //omit -this- function from the adjusted chart
+            };
 
-            if ( chartBBox.right - textBB.right < 0 ) { // text too long
-
-                var tspan = textElement.children[0],
-                text = tspan.textContent,
-                maxLegendTextWidth = 465 - 60, //total chart minus padding
-                diff = textBB.width - maxLegendTextWidth,
-                charactersPerUnit = textBB.width / text.length,
-                charactersToCut = Math.floor(diff/charactersPerUnit),
-                startIndex = text.length - charactersToCut,
-                breakPointIndex = text.lastIndexOf(' ',startIndex),
-                text1 = text.substr(0, breakPointIndex),
-                text2 = text.substr(breakPointIndex + 1),
-                tspan.textContent = text1,
-                fontFamily = series[i].legendItem.styles.fontFamily,
-                fontWeight = series[i].legendItem.styles.fontWeight,
-                styledText = '<span style="font-family:' + fontFamily + '; font-weight:' + fontWeight + ';">' + text2 + '</span>';
-
-                // var tspan2 = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-                // tspan2.textContent = text2;
-                // textElement.appendChild(tspan2);
-
-                //adjust the position of the existing text
-                series[i].legendItem.translate(
-                    series[i].legendGroup.translateX - 4, 
-                    series[i].legendGroup.translateY - 6);
-
-                // now, add the new text box
-                series[i].chart.renderer.text(
-                    styledText,
-                    textBB.left - chartBBox.left + 4,
-                    (textBB.top - chartBBox.top) + textBB.height + 7)
-                .add();
-
-            }
+            window.dashboardChart = new Highcharts.Chart(currentOptions);
 
         }
-        
+
     }
 
 
-
-
-
-
-
-
-
-
-
-    /** 
+    /**
       * Highcharts by default will hide labels in the event of an overlap
       * This function handles overlapping images in a way that all data is preserved
       * It basically uses bounding boxes to detect collision then
@@ -540,10 +524,6 @@
         if (sc != 2) {
             return;
         }
-
-        // TODO: how to handle extra long labels
-
-        // TODO: handle percentages on null columns
 
         // we expect one series of type column and one of type line
         // single and double columns don't require these adjustments
@@ -571,7 +551,6 @@
             xAxisY = columnSeries[i].shapeArgs.height + columnSeries[i].shapeArgs.y;
             // conceptually the x axis is 0, but we need the Y value of it
 
-
             // this line label is inside the column - paint it white
             if (lineLabel.y > columnTop) {
                 lineLabel.css({ color: '#fff' });
@@ -580,6 +559,10 @@
             // this line label is outside the column - paint it black
             if (lineLabelBottom < columnLabel.y) {
                 lineLabel.css({ color: '#000' });
+            }
+
+            if ( columnSeries[i].y === null) {
+               lineLabel.css({ color: '#000' });
             }
 
             // these labels overlap - push the line label down into the column and paint it black
@@ -601,6 +584,37 @@
         }
     }
 
+    function adjustDoublColumnLabels(series) {
+        // nope
+        if ( !series || series.length === 1 ) {
+          return;
+        }
+        // nope
+        if ( series[0].options.type != series[1].options.type ) {
+            return;
+        }
+
+        var seriesOneAverageLabelLength = 0;
+        var seriesOneLabelLengthTotal = 0;
+        for ( var i=0; i < series[1].options.formattedLabels.length; i++ ) {
+            seriesOneLabelLengthTotal += series[1].options.formattedLabels[i].length;
+            console.log(series[1].options.formattedLabels[i].length);
+        }
+        seriesOneAverageLabelLength = seriesOneLabelLengthTotal / series[1].options.formattedLabels.length;
+
+        if ( seriesOneAverageLabelLength > 5 ) { // these are some long ass labels
+            console.log('handle that');
+            columnSeries = series[1].points;
+
+            for (i = 0; i < columnSeries.length; i++) {
+                console.log('in there...');
+                var columnLabel = columnSeries[i].dataLabel;
+                console.log(columnLabel);
+            }
+        }
+
+    }
+
     /** 
       * this deals with the limitations of highcharts config options
       * it makes use of the Renderer() method provided by Highcharts
@@ -609,7 +623,9 @@
     */
     function adjustChart(series) {
 
-        adjustLegend(series);
+        if ( !series ) {
+          return;
+        }
 
         var chart = series[0].chart,
         chartBBox = document.getElementById('chart').getBoundingClientRect(),
@@ -687,9 +703,9 @@
         max = Math.max.apply(null, combinedArray);                   // the higest value in the series
         // adjust for the chart:
         if (max <= 0) { max = 0.1; } else                            // a max >= 0 throws everything off
-        if (max < 1) { max += (max * .2); } else                     // for lower values, use a higher percentage
-        if (max < 10) { max = Math.ceil(max += (max * .1)); } else   // use a lower percentage, but round it up
-        max = Math.ceil(max += (max * .1));                          // for a max > 10, 10% rounded is enough
+        if (max < 1) { max += (max * .3); } else                     // for lower values, use a higher percentage
+        if (max < 10) { max = Math.ceil(max += (max * .2)); } else   // use a lower percentage, but round it up
+        max = Math.ceil(max += (max * .14));                         // for a max > 10, 10% rounded is enough
 
         min = Math.min.apply(null, combinedArray);                   // the lowest value in the series
         // adjusted: 
@@ -703,8 +719,12 @@
     }
 
     H.destroyDashboardChart = function () {
-        if (window.dashboardChart) {
-            window.dashboardChart.destroy();
+        if ( window.dashboardChart ) {
+            try {
+                window.dashboardChart.destroy();
+            } catch (e) {
+                window.dashboardChart = undefined;
+            }
             window.dashboardChart = undefined;
         }
     }
@@ -726,6 +746,7 @@
         subtitle = subtitle || '',
         series = [],
         extremes,
+        highestPercentage,
         chartConfig = JSON.parse(JSON.stringify(highchartsDefaultConfig));
 
 
@@ -766,15 +787,25 @@
                     series.push(buildLineData(rawSeriesData[0]));
                     extremes = getExtremes(rawSeriesData[1].Values);
                     chartConfig.yAxis[0].max = extremes.max;
+                    highestPercentage = Math.max.apply(null, rawSeriesData[0].Values);
+
                 } else {
                     // push line data last, so it's one top, or, set the z index
                     series.push(buildColumnData(rawSeriesData[0]));
                     series.push(buildLineData(rawSeriesData[1]));
                     extremes = getExtremes(rawSeriesData[0].Values);
                     chartConfig.yAxis[0].max = extremes.max;
+                    highestPercentage = Math.max.apply(null, rawSeriesData[1].Values);
+
                 }
 
-                chartConfig.yAxis[1].max = 50; // push down the percentage line
+                // keep the line on the lower half of the chart
+                if ( highestPercentage > 40 ) {
+                    chartConfig.yAxis[1].max = highestPercentage + (highestPercentage * .3);
+                } else {
+                    chartConfig.yAxis[1].max = 50;
+                }
+
                 chartConfig.chart.alignTicks = false;
 
             } else {
@@ -808,7 +839,9 @@
 
         // add the necessary callbacks
         chartConfig.chart.events.load = function () {
+            adjustLegend(this.series);
             adjustChart(this.series);
+            adjustDoublColumnLabels(this.series);
         };
 
         chartConfig.chart.events.redraw = function () {
@@ -819,8 +852,23 @@
         };
 
         chartConfig.plotOptions.column.dataLabels.formatter = function () {
-            return this.y;
+            return this.series.options.formattedLabels[this.point.index];
         };
+
+        chartConfig.legend.labelFormatter = function () {
+            var origLabel = this.name;
+            var str = [];
+            var words = this.name.split(/[\s]+/);
+            var numWordsPerLine = 9;
+
+            for (var word in words) {
+                if (word > 0 && word % numWordsPerLine == 0)
+                    str.push('<br>');
+                str.push(words[word]);
+            }
+
+            return str.join(' ');
+        }
 
         window.dashboardChart = new Highcharts.Chart(chartConfig);
 
@@ -849,7 +897,7 @@ $(document).ready(function(){
         if ( $('#series-data input:checked').size() == 2 ) {
           $('#series-data input:not(:checked)').attr('disabled',true);
         } else {
-            $('#series-data input').removeAttr('disabled');
+           // $('#series-data input').removeAttr('disabled');
         }
 
         $('#series-data input:checked').each(function(index, el){
