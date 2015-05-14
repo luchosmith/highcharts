@@ -65,6 +65,45 @@
         <!--
             <div id="export-chart"><button disabled="disabled">Export</button></div>
         -->
+        <script>
+        $(document).ready(function(){
+
+            $.each(seriesData, function(index, item){
+              var el = '<div><input type="checkbox" id="id-' + item.Id + '"><label for="id-' + item.Id + '">' + item.Name + '</label></div>';
+              $('#series-data').append(el);
+            });
+
+            $('#series-data input').click(function(){
+                var selectedData = [];
+
+                if ( !$('#series-data input:checked').size() ) {
+                    Highcharts.destroyDashboardChart();
+                    return;
+                }
+
+                if ( $('#series-data input:checked').size() == 2 ) {
+                  $('#series-data input:not(:checked)').attr('disabled',true);
+                } else {
+                  $('#series-data input').removeAttr('disabled');
+                }
+
+                $('#series-data input:checked').each(function(index, el){
+                    var i = $(this).parent().index();
+                    selectedData.push(seriesData[i]);
+
+                });
+                        
+                Highcharts.createDashboardChart('Title', 'subtitle', selectedData);
+
+            });
+
+            //$('#export-chart button').click(function(e){
+            //    e.preventDefault();
+           //     myChart.exportChart();
+           // });
+
+        });
+        </script>
     </body>
 
 </html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+  <title>D3</title>
+  <script src="d3.js" type="text/javascript" charset="utf-8"></script>
+  <!-- <script src="http://d3js.org/d3.v3.min.js" type="text/javascript" charset="utf-8"></script> -->
+</head>
+<body style="background:lightgray;padding:30px 0 0 0;">
+    <div id="vizcontainer">
+       <svg style="background:white;width:465px;height:450px;display:block;margin:0 auto;">
+          <line x1="0" y1="0" x2="465" y2="0" stroke="#000" stroke-width="5"  />
+          <text x="5", y="20" class="title"></text>
+       </svg>
+    </div>
+    <div class="container">
+    </div>
+</body>
+<script>
+
+  var columnWidth = 35;
+  var columnMargin = 5;
+  var xAxisY = 300;
+  var yScale = d3.scale.linear().domain([0, 100,1000,24500]).range([0,50,75,100]);
+
+  var chartTitle = 'Chart Title Goes Here'
+  var multiLine = ['Chart title goes here','This is a really long title'];
+
+  var rawData = [{
+
+  "Id": "103",
+    "Name": "Directory Ad Spending (Billions)",
+    "Note": "print only; includes yellow pages and other",
+    "Chart": false,
+    "Type": "Currency",
+    "Values": [
+      4.9,
+      4.56,
+      4.2,
+      4.08,
+      4.95
+    ],
+    "HasData": true,
+    "PublishedAt": "2015-03-01T05:00:00Z"
+  }];
+
+  // add title
+  // TODO what if the text is too long?
+  // get the title text and analyze it
+  // how many words per line?
+  // if more than one line, create an array for each line
+  // create a tspan for each
+  // var title = d3.select('svg').append('text')
+  // .text(chartTitle)
+  // .attr('x',10)
+  // .attr('y',25)
+  // .attr('font-family','sans-serif')
+  // .attr('font-size', '20px')
+  // .attr('font-weight', 'bold')
+  // .attr('fill', 'red');
+
+
+  var title = d3.select('.title').selectAll('tspan')
+  .data(multiLine)
+  .enter()
+  .append('tspan')
+  .text(function(d){return d;})
+  .attr('x',5)
+  .attr('y', function(d,i){return (i*25)+25})
+  .attr('font-family','sans-serif')
+  .attr('font-size', '20px')
+  .attr('font-weight', 'bold')
+  .attr('fill', 'red');
+
+
+
+  console.log('title height: ', title.node().getBBox().height);
+
+
+  var itemG = d3.select('svg')
+  .selectAll('g')
+  .data([14, 68, 24500, 430, 19, 1000, 5555])
+  .enter()
+  .append('g')
+  .attr('transform', function(d,i){
+    return 'translate(' + i * (columnMargin + columnWidth) + ',' + (170 - yScale(d) )+ ')';
+  });
+
+  itemG.append('rect')
+  .attr('width', columnWidth)
+  .attr('height', function(d){return yScale(d)})
+  .attr('x', 0)
+  .attr('y', 0)
+  .style('fill', 'black');
+
+
+</script>
+</html>

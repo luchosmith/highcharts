@@ -69,11 +69,11 @@
   "Chart": false,
   "Type": "Currency",
   "Values": [
-    15.09,
-    15.05,
-    15.1,
-    15.15,
-    15.23
+    15.0000009,
+    15.0000005,
+    15.0000001,
+    15.0000015,
+    15.0000023
   ],
   "HasData": true,
   "PublishedAt": "2015-03-01T05:00:00Z"
@@ -278,7 +278,7 @@
 
         chart: {
             renderTo: 'chart', /*** The ID of the containing element **/
-            zoomType       : 'xy',
+            zoomType       : '',
             marginBottom   : 125,
             marginTop      : 37,
             spacingLeft    : 0,
@@ -366,7 +366,7 @@
                     crop: false,
                     overflow: 'none',
                     allowOverlap: true,
-                    useHTML: true,
+                    //useHTML: true,
                     style: {
                         fontWeight: 'bold',
                         fontFamily: 'Arial,sans-serif',
@@ -584,7 +584,9 @@
         }
     }
 
+
     function adjustDoublColumnLabels(series) {
+
         // nope
         if ( !series || series.length === 1 ) {
           return;
@@ -594,27 +596,34 @@
             return;
         }
 
-        var seriesOneAverageLabelLength = 0;
-        var seriesOneLabelLengthTotal = 0;
-        for ( var i=0; i < series[1].options.formattedLabels.length; i++ ) {
-            seriesOneLabelLengthTotal += series[1].options.formattedLabels[i].length;
-            console.log(series[1].options.formattedLabels[i].length);
-        }
-        seriesOneAverageLabelLength = seriesOneLabelLengthTotal / series[1].options.formattedLabels.length;
+        var longestLabel = 0;
 
-        if ( seriesOneAverageLabelLength > 5 ) { // these are some long ass labels
-            console.log('handle that');
-            columnSeries = series[1].points;
+        for (var i=0; i<series.length; i++){
 
-            for (i = 0; i < columnSeries.length; i++) {
-                console.log('in there...');
-                var columnLabel = columnSeries[i].dataLabel;
-                console.log(columnLabel);
-                columnLabel.div.style.webkitTransform = "rotate(-45deg)";
+            for ( var j=0; j < series[i].points.length; j++ ) {
+                var labelLength  = series[i].points[j].toString().length;
+                longestLabel = labelLength > longestLabel ? labelLength : longestLabel;
             }
+
+            if ( longestLabel > 5 ) { // these are some long labels
+
+                columnSeries = series[i].points;
+                console.log(columnSeries);
+
+                for (k=0; k < columnSeries.length; k++) {
+                    var columnLabel = columnSeries[k].dataLabel;
+                    //columnLabel.translate(columnLabel.translateX + 15, columnLabel.translateY + 10);
+                    columnLabel.translate(series[i].points[k].barX, columnLabel.translateY + 10);
+                    columnLabel.element.setAttribute('transform', columnLabel.element.getAttribute('transform') + ' rotate(-65, 0, 10)');
+                }
+            }
+
         }
 
     }
+
+
+
 
     /** 
       * this deals with the limitations of highcharts config options
@@ -751,6 +760,9 @@
         chartConfig = JSON.parse(JSON.stringify(highchartsDefaultConfig));
 
 
+
+
+
         if (rawSeriesData.length < 1 || rawSeriesData.length > 2) {
             return;
         }
@@ -819,6 +831,27 @@
                 series.push(buildColumnData(rawSeriesData[0]));
                 series.push(buildColumnData(rawSeriesData[1], true));
 
+                // let's check the length of those labels
+                var longestLabel = 0;
+                for (var i=0; i<rawSeriesData.length; i++) {
+
+                    var seriesAvgLabel = 0;
+                    var seriesLabelLengthTotal = 0;
+
+                    for ( var j=0; j < rawSeriesData[i].Values.length; j++ ) {
+                        var labelLength = rawSeriesData[i].Values[j].toString().length;
+                        longestLabel = labelLength > longestLabel ? labelLength : longestLabel
+                    }
+
+                }
+                if ( longestLabel > 8 ) {
+                    // the labels will need to be adjusted,
+                    // however, we won't do that here
+                    // the 'rotation' attribute gives unexpected results
+                    // for now, we'll just give the chart more room
+                    chartConfig.chart.marginTop = chartConfig.chart.marginTop + 20;
+                }
+
                 chartConfig.plotOptions.column.pointWidth = undefined;
                 chartConfig.plotOptions.column.groupPadding = 0.1;
                 chartConfig.plotOptions.column.dataLabels.style.fontSize = '12px';
@@ -840,7 +873,6 @@
 
         // add the necessary callbacks
         chartConfig.chart.events.load = function () {
-            adjustLegend(this.series);
             adjustChart(this.series);
             adjustDoublColumnLabels(this.series);
         };
@@ -853,23 +885,9 @@
         };
 
         chartConfig.plotOptions.column.dataLabels.formatter = function () {
-            return this.series.options.formattedLabels[this.point.index];
+            return this.y
         };
 
-        chartConfig.legend.labelFormatter = function () {
-            var origLabel = this.name;
-            var str = [];
-            var words = this.name.split(/[\s]+/);
-            var numWordsPerLine = 9;
-
-            for (var word in words) {
-                if (word > 0 && word % numWordsPerLine == 0)
-                    str.push('<br>');
-                str.push(words[word]);
-            }
-
-            return str.join(' ');
-        }
 
         window.dashboardChart = new Highcharts.Chart(chartConfig);
 
@@ -880,40 +898,3 @@
 
 }(Highcharts));
 
-$(document).ready(function(){
-
-    $.each(seriesData, function(index, item){
-      var el = '<div><input type="checkbox" id="id-' + item.Id + '"><label for="id-' + item.Id + '">' + item.Name + '</label></div>';
-      $('#series-data').append(el);
-    });
-
-    $('#series-data input').click(function(){
-        var selectedData = [];
-
-        if ( !$('#series-data input:checked').size() ) {
-            Highcharts.destroyDashboardChart();
-            return;
-        }
-
-        if ( $('#series-data input:checked').size() == 2 ) {
-          $('#series-data input:not(:checked)').attr('disabled',true);
-        } else {
-           // $('#series-data input').removeAttr('disabled');
-        }
-
-        $('#series-data input:checked').each(function(index, el){
-            var i = $(this).parent().index();
-            selectedData.push(seriesData[i]);
-
-        });
-                
-        Highcharts.createDashboardChart('Title', 'subtitle', selectedData);
-
-    });
-
-    //$('#export-chart button').click(function(e){
-    //    e.preventDefault();
-   //     myChart.exportChart();
-   // });
-
-});
