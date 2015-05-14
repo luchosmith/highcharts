@@ -7,23 +7,21 @@
 </head>
 <body style="background:lightgray;padding:30px 0 0 0;">
     <div id="vizcontainer">
-       <svg style="background:white;width:465px;height:450px;display:block;margin:0 auto;">
-          <line x1="0" y1="0" x2="465" y2="0" stroke="#000" stroke-width="5"  />
-          <text x="5", y="20" class="title"></text>
-       </svg>
-    </div>
-    <div class="container">
     </div>
 </body>
 <script>
 
-  var columnWidth = 35;
-  var columnMargin = 5;
+  var chartWidth = 465;
+  var chartHeight = 450;
+  var columnWidth = 50;
+  var columnMargin = 8;
+  var chartTitleTextSize = 20;
+  var chartTitleTextPadding = 5;
   var xAxisY = 300;
-  var yScale = d3.scale.linear().domain([0, 100,1000,24500]).range([0,50,75,100]);
 
   var chartTitle = 'Chart Title Goes Here'
   var multiLine = ['Chart title goes here','This is a really long title'];
+
 
   var rawData = [{
 
@@ -43,20 +41,30 @@
     "PublishedAt": "2015-03-01T05:00:00Z"
   }];
 
-  // add title
-  // TODO what if the text is too long?
-  // get the title text and analyze it
-  // how many words per line?
-  // if more than one line, create an array for each line
-  // create a tspan for each
-  // var title = d3.select('svg').append('text')
-  // .text(chartTitle)
-  // .attr('x',10)
-  // .attr('y',25)
-  // .attr('font-family','sans-serif')
-  // .attr('font-size', '20px')
-  // .attr('font-weight', 'bold')
-  // .attr('fill', 'red');
+
+  // inject the SVG element
+  // <svg style="background:white;width:465px;height:450px;display:block;margin:0 auto;">
+  var svg = d3.select('#vizcontainer').append('svg')
+  .style({
+    'background' : '#fff',
+    'width' : chartWidth + 'px',
+    'height' : chartHeight + 'px',
+    'display' : 'block',
+    'margin' : '0 auto'
+  });
+
+  
+  // add the top border
+  // <line x1="0" y1="0" x2="465" y2="0" stroke="#000" stroke-width="5"  />
+  var topBorder = svg.append('line')
+  .attr('x1',0)
+  .attr('y1',0)
+  .attr('x2',chartWidth)
+  .attr('y2',0)
+  .attr('stroke','#000')
+  .attr('stroke-width',5);
+
+  svg.append('text').attr('class','title');
 
 
   var title = d3.select('.title').selectAll('tspan')
@@ -65,24 +73,45 @@
   .append('tspan')
   .text(function(d){return d;})
   .attr('x',5)
-  .attr('y', function(d,i){return (i*25)+25})
+  .attr('y', function(d,i){
+    return (i*(chartTitleTextSize + chartTitleTextPadding)) +
+           (chartTitleTextSize + chartTitleTextPadding)
+  })
   .attr('font-family','sans-serif')
-  .attr('font-size', '20px')
+  .attr('font-size', chartTitleTextSize + 'px')
   .attr('font-weight', 'bold')
   .attr('fill', 'red');
 
+  console.log('title height: ', title.node().getBBox());
+
+  var headerUnderlineY = title.node().getBBox().height + title.node().getBBox().y + 3;
+  // + 3 for padding
+
+  // now, draw a line under the title.
+  var headerUnderline = svg.append('line')
+  .attr('x1',0)
+  .attr('y1',headerUnderlineY)
+  .attr('x2',chartWidth)
+  .attr('y2',headerUnderlineY)
+  .attr('stroke','#333')
+  .attr('stroke-width',1);
 
 
-  console.log('title height: ', title.node().getBBox().height);
 
+  // chart the actual data
+  var yScale = d3.scale.linear().domain([0, 100,1000,24500]).range([0,50,75,200]);
+  var chartOffsetLeft = 20; //TODO calculate this based on chart width
+  // TODO dynamically calculate column width based on chart width, number of columns, etc.
 
-  var itemG = d3.select('svg')
-  .selectAll('g')
+  var itemG = svg.selectAll('g')
   .data([14, 68, 24500, 430, 19, 1000, 5555])
   .enter()
   .append('g')
   .attr('transform', function(d,i){
-    return 'translate(' + i * (columnMargin + columnWidth) + ',' + (170 - yScale(d) )+ ')';
+    return 'translate(' + 
+      (i * (columnMargin + columnWidth ) + 20) + 
+      ',' + (300 - yScale(d) )+
+      ')';
   });
 
   itemG.append('rect')
@@ -91,6 +120,9 @@
   .attr('x', 0)
   .attr('y', 0)
   .style('fill', 'black');
+
+  itemG.append('text')
+  .text('hello');
 
 
 </script>
